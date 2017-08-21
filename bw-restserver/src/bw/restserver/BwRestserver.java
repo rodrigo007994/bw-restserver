@@ -1,22 +1,11 @@
 package bw.restserver;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class BwRestserver {
-public static byte[] readBytes(InputStream inputStream) throws IOException {
-    byte[] b = new byte[1024];
-    ByteArrayOutputStream os = new ByteArrayOutputStream();
-    int c;
-    while ((c = inputStream.read(b)) != -1) {
-      os.write(b, 0, c);
-    }
-    return os.toByteArray();
-  }
 
     //startServer("HTTP/1.1 200\nAccept-Ranges: bytes\nContent-Length: %contentLength%\nContent-type: application/pdf\nContent-Disposition: attachment; filename=\"filename.pdf\"\r\n\r\n",8086, contentbytes,5);
 
