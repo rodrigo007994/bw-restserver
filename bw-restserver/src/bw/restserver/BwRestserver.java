@@ -15,10 +15,10 @@ public class BwRestserver {
         Socket socket =server.accept();
         for(int c=0;c<limit||limit==0;socket=server.accept(),c++) {
             try {
-                //System.out.println("Listening ...");
+                Logger.getLogger(BwRestserver.class.getName()).log(Level.INFO, null, "Listening port: "+port);
                 int contentLength = contentbytes.length;
                 String httpResponse = headers.replaceFirst("%contentLength%", String.valueOf(contentLength));
-                //System.out.println(httpResponse);
+                Logger.getLogger(BwRestserver.class.getName()).log(Level.INFO, null, "Header: "+httpResponse);
                 socket.getOutputStream().write(httpResponse.getBytes("UTF-8"));
                 socket.getOutputStream().write(contentbytes);
             }catch(Exception ex){
@@ -26,6 +26,7 @@ public class BwRestserver {
                 System.out.println(ex.getMessage());
             }
         }
-                socket.close(); 
+                socket.close();
+                Logger.getLogger(BwRestserver.class.getName()).log(Level.INFO, null, "Socket Closed.");
     }
 }
